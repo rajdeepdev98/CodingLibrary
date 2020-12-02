@@ -9,14 +9,14 @@ int SA[N],RA[N],LCP[N];
 
 void createLCP(string s){
     int n=s.length();
-    for(int i=1;i<=n;i++)RA[SA[i]]=i-1;
+    for(int i=1;i<=n;i++)RA[SA[i]]=i;
     //creating the rank array
 
     int h=0;
     for(int i=0;i<n;i++){
 
-        if(RA[i]==0)continue;
-        if(RA[i]>0){
+        if(RA[i]==1)continue;
+        if(RA[i]>1){
 
             int k=SA[RA[i]-1];
             while(s[i+h]==s[k+h])h++;
