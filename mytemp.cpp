@@ -14,6 +14,7 @@
 #define FOR(i,a,b) for(int i=a;i<=b;i++)
 #define FORN(i,a,b) for(int i=a;i>=b;i--)
 #define b_pop(x)  __builtin_popcount(x)
+#define b_clz(x) __builtin_clz(x)
 #define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie()
 #define trav(a,x) for (auto& a: x)
 #define deb(x) cout<<#x<<"="<<x<<"\n"//debugging
@@ -21,8 +22,16 @@
     freopen("input.txt", "r", stdin); \
     freopen("output.txt", "w", stdout);
 
-
+using namespace __gnu_pbds;
 using namespace std;
+
+typedef tree<
+int,
+null_type,
+less<int>,
+rb_tree_tag,
+tree_order_statistics_node_update>
+ordered_set;
 const int MX=(int)(2e5)+5;
 int darr[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
 int arr[MX];
