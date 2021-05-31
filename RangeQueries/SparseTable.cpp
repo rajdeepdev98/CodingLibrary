@@ -36,9 +36,15 @@ int query(int l,int r){
     int ans=INT_MAX;
     int dis=r-l+1;
     //now the tricky part used in case of idempotent functions
+    
     int lr=log2(dis);
     int ld=1<<lr;
-    ans=min(ST[l][lr],ST[r-ld+1][lr]);
+    // ans=min(ST[l][lr],ST[r-ld+1][lr]);
+
+    //another trick using C++ builting bit manipulation
+    int ln=31-b_clz(r-l+1);//no of leading zeros
+    ans=min(ST[l][ln],ST[r-ln+1][ln]);
+
     return ans;
 
 
@@ -54,6 +60,21 @@ void precomputemax(){
 void precomputesum(){
 
 
+}
+void precomputeGCD(){
+     for(int i=1;i<=n;i++){//1 indexed array
+
+            ST[i][0]=arr[i];//ST[i][j] will have ans for range[i,i+2^j-1]
+
+    }
+
+    for(int j=1;j<L;j++){
+
+        for(int i=1;i+(1<<j)<=n+1;i++){
+
+            ST[i][j]=__gcd(ST[i][j-1],ST[i+(1<<(j-1))][j-1]);
+        }
+    }
 }
 
 
