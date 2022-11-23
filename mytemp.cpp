@@ -1,4 +1,10 @@
+/**
+ *    author:  MrRD
+ *    created: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND      
+**/
 #include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> // Common file
+#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
 #define lli long long int
 #define pb push_back
 #define in insert
@@ -7,6 +13,7 @@
 #define piil pair<lli,lli>
 #define ff first
 #define ss second
+#define sz(x) (int)(x.size())
 #define all(x) x.begin(),x.end()
 #define clr(x) memset(x,0,sizeof(x))
 #define fo(i,n) for(int i=0;i<n;i++)
@@ -14,6 +21,7 @@
 #define FOR(i,a,b) for(int i=a;i<=b;i++)
 #define FORN(i,a,b) for(int i=a;i>=b;i--)
 #define b_pop(x)  __builtin_popcount(x)
+#define b_popll(x) __builtin_popcountll(x)
 #define b_clz(x) __builtin_clz(x)
 #define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie()
 #define trav(a,x) for (auto& a: x)
@@ -48,13 +56,23 @@ A Max(A a,A b,Args... args){
     return Max(Max(a,b),args...);
 }
 template<typename A>
-void amin(A& a, A b){
-    a=min(a,b);
+A Min(A a,A b){
+    return min(a,b);
 }
-template<typename A>
-void amax(A& a, A b){
-    a=max(a,b);
+template<typename A,typename... Args>
+A Min(A a,A b,Args... args){
+    return Min(Min(a,b),args...);
 }
+template<typename A,typename... Args>
+void amin(A& a,Args... args){
+    a=Min(a,args...);
+}
+template<typename A,typename... Args>
+void amax(A& a,Args... args){
+    a=Max(a,args...);
+}
+void dbg_out() { cout << endl; }
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << H<<" "; dbg_out(T...); }
 
 //GCD portion (without Euclids)
 
@@ -95,8 +113,8 @@ int main(){
     fast;
 
     int t;
-    // cin>>t;
-    t=1;
+    cin>>t;
+    // t=1;
 
     while(t--){
         solve();
