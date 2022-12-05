@@ -21,8 +21,10 @@
 #define FOR(i,a,b) for(int i=a;i<=b;i++)
 #define FORN(i,a,b) for(int i=a;i>=b;i--)
 #define b_pop(x)  __builtin_popcount(x)
-#define b_popll(x) __builtin_popcountll(x)
-#define b_clz(x) __builtin_clz(x)
+#define b_popll(x) __builtin_popcountll(x)//number of set bits
+#define b_clz(x) __builtin_clz(x)//leading zeroes
+#define b_ctz(x) __builtin_ctz(x) //trailing zeroes
+#define b_par(x) __builtin_parity(x) //parity
 #define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie()
 #define trav(a,x) for (auto& a: x)
 #define deb(x) cout<<#x<<"="<<x<<"\n"//debugging
@@ -46,7 +48,7 @@ int arr[MX];
 vector<int>graph[MX];
 
 // Utility functions
-void setPrec() { cout << fixed << setprecision(15); }
+void setPrec(int n) { cout << fixed << setprecision(n); }
 template<typename A>
 A Max(A a,A b){
     return max(a,b);
