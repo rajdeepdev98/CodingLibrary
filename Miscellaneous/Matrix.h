@@ -15,12 +15,12 @@
 template<class T> struct Matrix {
 	typedef Matrix M;
 
-    vector<vector<T>>a;
+    vector<vector<T>>d;
     int N;
     Matrix(int n){
 
         N=n;
-        a.resize(n,vector<T>(n));
+        d.resize(n,vector<T>(n));
     }
 
     
@@ -37,7 +37,7 @@ template<class T> struct Matrix {
 		fo(i,N)fo(j,N)ret[i]=(ret[i]+(d[i][j] * vec[j])%modno)%modno;
 		return ret;
 	}
-	M operator^(lli p) const {
+	M operator^(int p) const {
 		assert(p >= 0);
 		M a(N), b(*this);
 		fo(i,N) a.d[i][i] = 1;
