@@ -1,7 +1,8 @@
 /**
  *    author:  MrRD
- *    created: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND      
+ *    created: 2022-12-29 15:04:51      
 **/
+
 #include<bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp> // Common file
 #include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
@@ -73,6 +74,17 @@ template<typename A,typename... Args>
 void amax(A& a,Args... args){
     a=Max(a,args...);
 }
+template <typename A>
+A add(A a, A b)
+{
+    return a + b;
+}
+template <typename A, typename... Args>
+A add(A a, A b, Args... args)
+{
+    return add(add(a, b), args...);
+}
+
 void dbg_out() { cout << endl; }
 template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << H<<" "; dbg_out(T...); }
 
@@ -115,8 +127,8 @@ int main(){
     fast;
 
     int t;
-    cin>>t;
-    // t=1;
+    // cin>>t;
+    t=1;
 
     while(t--){
         solve();
