@@ -42,8 +42,19 @@ public class DFS {
         // TODO: Implement DFS algorithm
         // 1. Mark node as visited
         // 2. Record discovery time
-        // 3. Recursively visit all unvisited neighbors
-        // 4. Record finish time
+        // 3. Mark source as the parent of neighbour
+        // 4. Recursively visit all unvisited neighbors
+        // 5. Record finish time
+        visited[source] = true;
+        discoveryTime[source] = time++;
+        for (int el : adj[source]){
+
+            if(!visited[el]){
+                parent[el] = source;
+                dfs(el);
+            }
+        }
+        finishTime[source] = time++;
     }
 
     // Run DFS on entire graph (handles disconnected components)
