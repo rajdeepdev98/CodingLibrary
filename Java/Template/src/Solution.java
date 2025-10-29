@@ -2,8 +2,11 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-    static FastScanner sc = new FastScanner();
-    static PrintWriter out = new PrintWriter(System.out);
+    static FastScanner sc;
+    static PrintWriter out;
+
+    // Toggle file I/O: true = use files, false = use console
+    static final boolean USE_FILE_IO = false;
 
     public static void solve() {
         // Write your solution here
@@ -11,12 +14,24 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int t = 1;
-        // t = sc.nextInt();
-        while (t-- > 0) {
-            solve();
+        try {
+            if (USE_FILE_IO) {
+                sc = new FastScanner(new FileInputStream("input.txt"));
+                out = new PrintWriter(new FileOutputStream("output.txt"));
+            } else {
+                sc = new FastScanner(System.in);
+                out = new PrintWriter(System.out);
+            }
+
+            int t = 1;
+            // t = sc.nextInt();
+            while (t-- > 0) {
+                solve();
+            }
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        out.close();
     }
 
     // Helper methods for printing
@@ -96,8 +111,12 @@ public class Solution {
     }
 
     static class FastScanner {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br;
         StringTokenizer st = new StringTokenizer("");
+
+        FastScanner(InputStream in) {
+            br = new BufferedReader(new InputStreamReader(in));
+        }
 
         String next() {
             while (!st.hasMoreTokens()) {
