@@ -41,10 +41,30 @@ public class ZeroOneBFS {
 
     // Run 0-1 BFS from source node
     void zeroOneBFS(int source) {
-        // TODO: Implement 0-1 BFS algorithm
         // 1. Use deque instead of priority queue
         // 2. If edge weight = 0, add to front of deque
         // 3. If edge weight = 1, add to back of deque
+        Deque<Integer>deque = new ArrayDeque<>();
+        this.dist[source] = 0;
+        deque.addFirst(source);
+
+        while(!deque.isEmpty()){
+
+            int node = deque.pollFirst();
+            for( Edge el : adj[node]){
+
+                if(dist[node] + el.weight < dist[el.to]){
+
+                    dist[el.to] = dist[node] + el.weight;
+                    if(el.weight == 0){
+                        deque.addFirst(el.to);
+                    }
+                    else deque.addLast(el.to);
+
+                }
+            }
+        }
+
     }
 
     // Get shortest distance to node

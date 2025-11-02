@@ -25,6 +25,7 @@ public class BFS {
         for (int i = 0; i <= n; i++) {
             adj[i] = new ArrayList<>();
             parent[i] = -1;
+            dist[i] = -1;
         }
     }
 
@@ -39,6 +40,29 @@ public class BFS {
         // 1. Use queue for level-order traversal
         // 2. Mark source as visited, dist[source] = 0
         // 3. Process all neighbors level by level
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(source);
+        this.dist[source] = 0;
+        this.visited[source] = true; // node should be marked visited before adding to the queue
+
+        while(!queue.isEmpty()){
+
+            int node = queue.poll();
+            this.visited[node] = true;
+
+            for (int el : adj[node]){
+
+                 if( !this.visited[el]){
+
+                     queue.add(el);
+                     this.visited[el] = true;
+                     this.dist[el] = this.dist[node]+1;
+                     this.parent[el]  = node;
+
+                 }
+
+            }
+        }
     }
 
     // Get shortest distance (number of edges)
